@@ -1,0 +1,31 @@
+// Start:: Root Element
+:root {
+    // --gradient: #57ddff to rgb(192, 88, 243)
+    
+    --bright_blue: #3a7bfd;
+    --light-cyan: #57ddff;
+    --soft-violet: #c058f3;
+
+    .v-theme--light {
+        // Light Theme
+        --v-theme-background: #e4e5f1;
+        --v-input-bg: #fafafa;
+        --placeholder-clr: rgb(147, 148, 165);
+        --text-clr: rgb(72, 75, 106);
+        --border-clr: rgb(210, 211, 219);
+    }
+
+    .v-theme--dark {
+        //  Dark Theme
+        --v-theme-background: rgb(22, 23, 34);
+        --v-input-bg: rgb(37, 39, 60);
+        --placeholder-clr: rgb(119, 122, 146);
+        --text-clr: #cacde8;
+        --shadow-clr: hsl(236, 33%, 92%);
+        --very_dark_grayish_blue: rgb(77, 80, 102);
+        --border-clr: hsl(237, 14%, 26%);
+    }
+}
+
+
+// End:: Root Element
