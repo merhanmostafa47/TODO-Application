@@ -2,6 +2,7 @@
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
+import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -16,6 +17,12 @@ export default defineConfig({
     // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
     vuetify({
       autoImport: true,
+    }),
+    VueI18nPlugin({
+      compositionOnly: true,
+      runtimeOnly: false,
+      defaultSFCLang: "json",
+      include: fileURLToPath(new URL("./src/locales/**", import.meta.url)),
     }),
     ViteFonts({
       google: {

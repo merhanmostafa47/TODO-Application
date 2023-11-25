@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import type {themeState} from "@/types/types";
+import type { themeState } from "@/types/types";
 
 export const useThemeStore = defineStore("themeStore", {
   state: () => ({
@@ -7,10 +7,10 @@ export const useThemeStore = defineStore("themeStore", {
   }),
 
   actions: {
-    setTheme(theme:themeState) {
+    setTheme(theme: themeState) {
       this.theme = theme;
-      localStorage.setItem("theme", theme.toString());
-      document.documentElement.setAttribute("data-theme", theme.toString());
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
     },
   },
 });

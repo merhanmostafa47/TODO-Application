@@ -3,8 +3,9 @@
     <v-container>
       <v-row justify="space-between" align="center">
         <v-app-bar-title>
-          <h1>title</h1>
+          <h1>{{ $t("appName") }}</h1>
         </v-app-bar-title>
+        <localeSwitcher />
         <ThemeSwitcher />
       </v-row>
     </v-container>
@@ -12,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import localeSwitcher from "@/components/LocaleSwitcher.vue";
 import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
 </script>
 
