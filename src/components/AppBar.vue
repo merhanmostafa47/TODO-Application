@@ -21,7 +21,6 @@ import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
 .v-toolbar {
   position: relative !important;
   background-color: transparent !important;
-  z-index: 10 !important;
 
   &__content {
     position: relative;

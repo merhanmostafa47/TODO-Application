@@ -123,7 +123,6 @@ function clearCompletedFun(): void {
 <style lang="scss" scoped>
 .todo_list_wrapper {
     margin-block-start: 2rem;
-    z-index: 2;
     position: relative;
 }
 
