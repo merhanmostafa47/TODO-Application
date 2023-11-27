@@ -45,8 +45,8 @@ watch(screenWidth, () => {
   @include size(100%, 100%);
   top: 0;
   inset-inline: 0;
-  // z-index: -1;
-
+  z-index: 0;
+  
   img {
     object-fit: cover;
     inline-size: 100%;

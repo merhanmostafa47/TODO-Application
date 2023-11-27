@@ -2,12 +2,14 @@
   <v-main>
     <AppImage />
     <default-bar />
+    <todo-list />
   </v-main>
 </template>
 
 <script lang="ts" setup>
 import DefaultBar from "@/components/AppBar.vue";
 import AppImage from "@/components/AppImage.vue";
+import TodoList from "@/components/TodoList.vue";
 </script>
 
 <style lang="scss" scoped>
