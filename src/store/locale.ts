@@ -4,7 +4,7 @@ import type { localeState } from "@/types/types";
 
 export const useLocaleStore = defineStore("localeStore", {
   state: () => ({
-    locale: localStorage.getItem("locale") as localeState,
+    locale: (localStorage.getItem("locale") as localeState) || "en",
   }),
 
   actions: {

@@ -1,12 +1,12 @@
 <template>
     <div class="todo_list_wrapper">
-        <TodoInput @create="addItem($event)" @click="allItems(); activeBtn = 'all'" />
+        <TodoInput @create="todosStore.addItem($event)" @click="allItems(); activeBtn = 'all'" />
 
         <div class="todo_items_wrapper">
-            <TodoItem v-for="item in itemsCopy" :key="item.id" :item="item" @delete="deleteItem(item.id)"
-                @update="toggleModel(item.id)" :updatedText="item.val" @checkItem="checkItem($event)"
+            <TodoItem v-for="item in itemsCopy" :key="item.id" :item="item" @delete="todosStore.deleteItem(item.id)"
+                @update="toggleModel(item.id)" :updatedText="item.val" @checkItem="todosStore.checkItem($event)"
                 :checked="item.checked" />
-            <div class="btns_wrapper" v-if="items.length > 0">
+            <div class="btns_wrapper" v-if="todosStore.todos.length > 0">
                 <span class="list_lendth">
                     {{ itemsCopy.length }} items left
                 </span>
@@ -29,7 +29,7 @@
         </div>
 
         <EditModal :open="openEditModel" :item="selectedItem" @closeModel="openEditModel = false"
-            @editData="updateItem($event)" />
+            @editData="todosStore.updateItem($event)" />
     </div>
 </template>
 
@@ -38,11 +38,11 @@ import { ref, reactive, watchEffect } from 'vue';
 import TodoInput from './TodoInput.vue';
 import TodoItem from './TodoItem.vue';
 import EditModal from './EditModal.vue'
-
-
 import type { todoItem, filterBtn } from '@/types/types'
 
-let items = ref<todoItem[]>([])
+import { useTodosStore } from '@/store/todos';
+
+const todosStore = useTodosStore()
 
 let itemsCopy = ref<todoItem[]>([])
 
@@ -53,27 +53,8 @@ let openEditModel = ref<boolean>(false)
 let activeBtn = ref<filterBtn>('all')
 
 watchEffect(() => {
-    itemsCopy.value = items.value
+    itemsCopy.value = todosStore.todos
 })
-
-function addItem(el: string): void {
-    items.value.push({
-        id: Math.random(),
-        val: el,
-        checked: false
-    })
-}
-
-// Delete selected item
-function deleteItem(id: todoItem['id']): void {
-    items.value = items.value.filter(item => item.id != id);
-
-    // items.value.forEach(item => {
-    //     if (item.id == id) {
-    //         items.value.splice(items.value.indexOf(item), 1);
-    //     }
-    // });
-}
 
 // Open edit Model
 function toggleModel(id: todoItem['id']): void {
@@ -84,39 +65,26 @@ function toggleModel(id: todoItem['id']): void {
     }
 }
 
-function updateItem(el: todoItem): void {
-    let editedItem = items.value.find(item => item.id == el.id)
-    if (editedItem) {
-        editedItem.val = el.val
-    }
-}
-
-function checkItem(id: todoItem['id']): void {
-    let item = items.value.find(item => item.id == id)
-    if (item) {
-        item.checked = !item.checked
-    }
-}
-
 // Filter Buttons
 function allItems(): void {
     activeBtn.value = 'all'
-    itemsCopy.value = items.value
+    itemsCopy.value = todosStore.todos
 }
 
 function completedFun(): void {
     activeBtn.value = 'completed'
-    itemsCopy.value = items.value.filter(item => item.checked == true)
+    itemsCopy.value = todosStore.todos.filter((item: { checked: boolean }) => item.checked == true)
 }
 
 function activeFun(): void {
     activeBtn.value = 'active'
-    itemsCopy.value = items.value.filter(item => item.checked == false)
+    itemsCopy.value = todosStore.todos.filter((item: { checked: boolean }) => item.checked == false)
 }
 
 function clearCompletedFun(): void {
-    items.value = items.value.filter(item => item.checked == false)
+    todosStore.todos = todosStore.todos.filter((item: { checked: boolean }) => item.checked == false)
     allItems()
+    todosStore.updateTodos()
 }
 </script>
 

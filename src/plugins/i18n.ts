@@ -9,7 +9,8 @@ import enLocale from "@/locales/en.json";
 
 const i18n = createI18n({
   legacy: false,
-  locale: localeStore.locale as localeState, // set locale
+  locale: localeStore.locale as localeState,
+  fallbackLocale:localeStore.locale as localeState == "en" ? "ar" : "en",
   messages: {
     ar: arLocale,
     en: enLocale,
