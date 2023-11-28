@@ -1,11 +1,15 @@
 import { defineStore } from "pinia";
-import type { todoItem } from "@/types/types";
+import type { todoItem, filterBtn } from "@/types/types";
 
 export const useTodosStore = defineStore("todos", {
   state: () => ({
     todos: localStorage.getItem("todos")
       ? JSON.parse(localStorage.getItem("todos") as string)
       : ([] as todoItem[]),
+
+    filterBtn: "all" as filterBtn,
+
+    todosCopy: [] as todoItem[],
   }),
 
   actions: {
@@ -48,6 +52,34 @@ export const useTodosStore = defineStore("todos", {
       if (item) {
         item.checked = !item.checked;
       }
+      this.updateTodos();
+    },
+
+    // Filter Buttons
+    allItems(): void {
+      this.filterBtn = "all";
+      this.todosCopy = this.todos;
+    },
+
+    completedFun(): void {
+      this.filterBtn = "completed";
+      this.todosCopy = this.todos.filter(
+        (item: { checked: boolean }) => item.checked == true
+      );
+    },
+
+    activeFun(): void {
+      this.filterBtn = "active";
+      this.todosCopy = this.todos.filter(
+        (item: { checked: boolean }) => item.checked == false
+      );
+    },
+
+    clearCompletedFun(): void {
+      this.todos = this.todos.filter(
+        (item: { checked: boolean }) => item.checked == false
+      );
+      this.allItems();
       this.updateTodos();
     },
   },

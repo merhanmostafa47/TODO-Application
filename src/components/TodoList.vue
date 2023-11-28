@@ -1,28 +1,31 @@
 <template>
     <div class="todo_list_wrapper">
-        <TodoInput @create="todosStore.addItem($event)" @click="allItems(); activeBtn = 'all'" />
+        <TodoInput @create="todosStore.addItem($event)" @click="todosStore.allItems(); todosStore.filterBtn === 'all'" />
 
         <div class="todo_items_wrapper">
-            <TodoItem v-for="item in itemsCopy" :key="item.id" :item="item" @delete="todosStore.deleteItem(item.id)"
-                @update="toggleModel(item.id)" :updatedText="item.val" @checkItem="todosStore.checkItem($event)"
-                :checked="item.checked" />
+            <TodoItem v-for="item in todosStore.todosCopy" :key="item.id" :item="item"
+                @delete="todosStore.deleteItem(item.id)" @update="toggleModel(item.id)" :updatedText="item.val"
+                @checkItem="todosStore.checkItem($event)" :checked="item.checked" />
             <div class="btns_wrapper" v-if="todosStore.todos.length > 0">
                 <span class="list_lendth">
-                    {{ itemsCopy.length }} items left
+                    {{ todosStore.todosCopy.length }} items left
                 </span>
                 <div class="actions_btn_wrapper">
-                    <button class="action_btn" @click="allItems" :class="{ active: activeBtn === 'all' }">
+                    <button class="action_btn" @click="todosStore.allItems()"
+                        :class="{ active: todosStore.filterBtn === 'all' }">
                         All
                     </button>
-                    <button class="action_btn" @click="completedFun" :class="{ active: activeBtn === 'completed' }">
+                    <button class="action_btn" @click="todosStore.completedFun()"
+                        :class="{ active: todosStore.filterBtn === 'completed' }">
                         Completed
                     </button>
                     <br>
-                    <button class="action_btn" @click="activeFun" :class="{ active: activeBtn === 'active' }">
+                    <button class="action_btn" @click="todosStore.activeFun()"
+                        :class="{ active: todosStore.filterBtn === 'active' }">
                         Active
                     </button>
                 </div>
-                <button class="action_btn" @click="clearCompletedFun">
+                <button class="action_btn" @click="todosStore.clearCompletedFun()">
                     Clear Completed
                 </button>
             </div>
@@ -38,54 +41,29 @@ import { ref, reactive, watchEffect } from 'vue';
 import TodoInput from './TodoInput.vue';
 import TodoItem from './TodoItem.vue';
 import EditModal from './EditModal.vue'
-import type { todoItem, filterBtn } from '@/types/types'
+import type { todoItem } from '@/types/types'
 
 import { useTodosStore } from '@/store/todos';
 
 const todosStore = useTodosStore()
 
-let itemsCopy = ref<todoItem[]>([])
-
 let selectedItem = reactive<todoItem>({} as todoItem)
 
 let openEditModel = ref<boolean>(false)
 
-let activeBtn = ref<filterBtn>('all')
-
 watchEffect(() => {
-    itemsCopy.value = todosStore.todos
+    todosStore.todosCopy = todosStore.todos
 })
 
 // Open edit Model
 function toggleModel(id: todoItem['id']): void {
-    let item = itemsCopy.value.find(item => item.id == id)
+    let item = todosStore.todosCopy.find(item => item.id == id)
     if (item) {
         openEditModel.value = true
         selectedItem = item
     }
 }
 
-// Filter Buttons
-function allItems(): void {
-    activeBtn.value = 'all'
-    itemsCopy.value = todosStore.todos
-}
-
-function completedFun(): void {
-    activeBtn.value = 'completed'
-    itemsCopy.value = todosStore.todos.filter((item: { checked: boolean }) => item.checked == true)
-}
-
-function activeFun(): void {
-    activeBtn.value = 'active'
-    itemsCopy.value = todosStore.todos.filter((item: { checked: boolean }) => item.checked == false)
-}
-
-function clearCompletedFun(): void {
-    todosStore.todos = todosStore.todos.filter((item: { checked: boolean }) => item.checked == false)
-    allItems()
-    todosStore.updateTodos()
-}
 </script>
 
 <style lang="scss" scoped>
