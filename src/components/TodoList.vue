@@ -3,9 +3,15 @@
         <TodoInput @create="todosStore.addItem($event)" @click="todosStore.allItems(); todosStore.filterBtn === 'all'" />
 
         <div class="todo_items_wrapper">
-            <TodoItem v-for="item in todosStore.todosCopy" :key="item.id" :item="item"
-                @delete="todosStore.deleteItem(item.id)" @update="toggleModel(item.id)" :updatedText="item.val"
-                @checkItem="todosStore.checkItem($event)" :checked="item.checked" />
+            <draggable tag="ul" :list="todosStore.todosCopy" :animation="300" :itemKey="(Math.random()).toString()">
+                <template #item="{ element: item }">
+                    <li :key="item.id">
+                        <TodoItem :item="item" @delete="todosStore.deleteItem(item.id)" @update="toggleModel(item.id)"
+                            :updatedText="item.val" @checkItem="todosStore.checkItem($event)" :checked="item.checked" />
+                    </li>
+                </template>
+            </draggable>
+
             <div class="btns_wrapper" v-if="todosStore.todos.length > 0">
                 <span class="list_lendth">
                     {{ todosStore.todosCopy.length }} items left
@@ -43,6 +49,8 @@ import TodoItem from './TodoItem.vue';
 import EditModal from './EditModal.vue'
 import type { todoItem } from '@/types/types'
 
+import draggable from 'vuedraggable';
+
 import { useTodosStore } from '@/store/todos';
 
 const todosStore = useTodosStore()
@@ -53,6 +61,7 @@ let openEditModel = ref<boolean>(false)
 
 watchEffect(() => {
     todosStore.todosCopy = todosStore.todos
+    todosStore.updateTodos()
 })
 
 // Open edit Model
@@ -77,10 +86,14 @@ function toggleModel(id: todoItem['id']): void {
     border-radius: 4px;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 21rem;
+    max-height: 21.5rem;
 
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    li {
+        border-bottom: .5px solid var(--border-clr);
     }
 }
 

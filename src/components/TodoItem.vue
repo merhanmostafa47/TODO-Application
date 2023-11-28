@@ -48,10 +48,6 @@ watchEffect(() => {
     @include flex(space-between, center);
     gap: 1rem;
 
-    &:not(:last-child) {
-        border-bottom: .5px solid var(--border-clr);
-    }
-
     .todo_item {
         inline-size: fit-content;
         outline: none;
