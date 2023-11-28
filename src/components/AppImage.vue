@@ -46,10 +46,16 @@ watch(screenWidth, () => {
   top: 0;
   inset-inline: 0;
   z-index: 0;
-  
+
   img {
     object-fit: cover;
     inline-size: 100%;
+    min-height: 20rem;
+    max-height: 22rem;
+
+    @include media(lg) {
+      max-height: 24rem;
+    }
   }
 }
 </style>

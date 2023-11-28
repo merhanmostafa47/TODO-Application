@@ -1,7 +1,7 @@
 <template>
     <Transition>
         <div class="edit_modal_wrapper" v-if="open">
-            <v-container class="px-12" align="center">
+            <v-container class="px-6" align="center" justify="center">
                 <div class="model_wrapper">
                     <button class="action_btn" @click="$emit('closeModel')">
                         <IconCross :color="'var(--text-clr)'" />
@@ -42,7 +42,6 @@ watchEffect(() => {
 })
 
 function updateData(item: todoItem) {
-    console.log(item);
     item.val = dataToEdit.value
     emits('editData', item)
     emits('closeModel')
@@ -80,6 +79,10 @@ function updateData(item: todoItem) {
             linear-gradient(130deg, var(--light-cyan), var(--soft-violet)) border-box;
         border-radius: 1rem;
         border: 1px solid transparent;
+
+        @include media(md) {
+            inline-size: 100%;
+        }
     }
 
     .action_btn {

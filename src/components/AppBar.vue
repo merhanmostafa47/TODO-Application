@@ -36,4 +36,12 @@ import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
     text-transform: uppercase;
   }
 }
+
+html:lang(ar) {
+  .v-toolbar__content {
+    h1 {
+      letter-spacing: 0;
+    }
+  }
+}
 </style>

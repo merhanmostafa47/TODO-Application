@@ -17,6 +17,7 @@ import i18n from "@/plugins/i18n";
 import type { localeState } from "@/types/types"
 
 import { useLocale } from "vuetify";
+import { onMounted } from "vue";
 const { current } = useLocale();
 
 function changeLocale(locale: localeState): void {
@@ -25,4 +26,8 @@ function changeLocale(locale: localeState): void {
   document.documentElement.setAttribute("lang", localStorage.getItem("locale") as localeState);
   current.value = localeStore.locale as localeState;
 }
+
+onMounted(() => {
+  document.documentElement.setAttribute("lang", localStorage.getItem("locale") as localeState);
+});
 </script>

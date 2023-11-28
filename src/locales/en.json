@@ -1,3 +1,10 @@
 {
-    "appName":"TODO"
+    "appName":"TODO",
+    "addTask": "Create a new todo...",
+    "all":"All",
+    "active":"Active",
+    "completed":"Completed",
+    "deleteCompleted":"Clear Completed",
+    "dragStatement":"Drag and drop to reorder list",
+    "itemsLeft":"items left"
 }

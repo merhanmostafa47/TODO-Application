@@ -14,7 +14,7 @@ import TodoList from "@/components/TodoList.vue";
 
 <style lang="scss" scoped>
 .v-main {
-  padding-block-start: 10rem;
+  padding-block-start: 5rem;
   inline-size: 50%;
   margin-inline: auto;
 

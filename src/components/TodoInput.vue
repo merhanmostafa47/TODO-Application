@@ -2,7 +2,7 @@
     <div class="input_wrapper">
         <span class="check-label">
         </span>
-        <input name="itemInput" v-model="itemInput" type="text" ref="input" placeholder="Create a new todo..."
+        <input name="itemInput" v-model="itemInput" type="text" ref="input" :placeholder="$t('addTask')"
             class="form-control" @change="addItem" />
     </div>
 </template>
