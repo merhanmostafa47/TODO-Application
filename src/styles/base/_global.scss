@@ -14,6 +14,10 @@ body {
   block-size: 100vh;
 }
 
+::selection{
+  background-color: var( --v-theme-background);
+  color: var(--text-clr);
+}
 // End:: Global Theme Classes
 
 [data-theme='dark'] {

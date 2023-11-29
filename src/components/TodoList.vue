@@ -122,7 +122,7 @@ function toggleModel(id: todoItem['id']): void {
     flex-wrap: wrap;
     background-color: var(--v-input-bg);
     padding: 1rem;
-    @include font(500, 14px, var(--placeholder-clr));
+    @include font(600, 14px, var(--placeholder-clr));
     position: sticky;
     bottom: 0;
 }
