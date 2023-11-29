@@ -1,7 +1,6 @@
 <template>
   <div class="bg">
-    <img :src="`/src/assets/images/bg-${mediaSize}-${themeStore.theme === 'light' ? 'light' : 'dark'
-      }.jpg`" alt="" />
+    <img :src="`/images/bg-${mediaSize}-${themeStore.theme === 'light' ? 'light' : 'dark'}.jpg`" alt="Background image" loading="lazy" />
   </div>
 </template>
 
