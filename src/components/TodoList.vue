@@ -94,7 +94,7 @@ function toggleModel(id: todoItem['id']): void {
 <style lang="scss" scoped>
 .todo_list_wrapper {
     margin-block-start: 2.5rem;
-    position: relative;
+    position: relative; 
 }
 
 .todo_items_wrapper {
@@ -122,7 +122,7 @@ function toggleModel(id: todoItem['id']): void {
     flex-wrap: wrap;
     background-color: var(--v-input-bg);
     padding: 1rem;
-    @include font(400, 14px, var(--placeholder-clr));
+    @include font(500, 14px, var(--placeholder-clr));
     position: sticky;
     bottom: 0;
 }
@@ -158,7 +158,7 @@ function toggleModel(id: todoItem['id']): void {
             background-color: var(--v-input-bg);
             padding: 1rem;
             margin-block-start: 1rem;
-            @include font(400, 14px, var(--placeholder-clr));
+            @include font(500, 14px, var(--placeholder-clr));
         }
 
     }
