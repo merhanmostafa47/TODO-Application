@@ -26,8 +26,12 @@ import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
     position: relative;
 
     h1 {
-      @include font(700, 2rem, var(--very_light_gray));
-      letter-spacing: 2rem;
+      @include font(700, 2.25rem, var(--very_light_gray));
+      letter-spacing: 1.5rem;
+
+      @include media(md) {
+        font-size: 1.8rem;
+      }
     }
   }
 

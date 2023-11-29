@@ -1,10 +1,10 @@
 <template>
   <div class="locale_switcher_wrapper">
-    <button @click="changeLocale('en')" v-if="localeStore.locale == 'ar'">
+    <button @click="changeLocale('en')" v-if="localeStore.locale == 'ar'" aria-labelledby="Select English locale">
       EN
     </button>
 
-    <button @click="changeLocale('ar')" v-if="localeStore.locale == 'en'">
+    <button @click="changeLocale('ar')" v-if="localeStore.locale == 'en'" aria-labelledby="Select Arabic locale">
       AR
     </button>
   </div>
@@ -28,6 +28,6 @@ function changeLocale(locale: localeState): void {
 }
 
 onMounted(() => {
-  document.documentElement.setAttribute("lang", localStorage.getItem("locale") as localeState);
+  document.documentElement.setAttribute("lang", localStorage.getItem("locale") as localeState || "en");
 });
 </script>

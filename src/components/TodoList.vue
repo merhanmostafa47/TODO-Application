@@ -17,34 +17,34 @@
                     {{ todosStore.todosCopy.length }} {{ $t("itemsLeft") }}
                 </span>
                 <div class="actions_btn_wrapper">
-                    <button class="action_btn" @click="todosStore.allItems()"
+                    <button class="action_btn" aria-labelledby="All items" @click="todosStore.allItems()"
                         :class="{ active: todosStore.filterBtn === 'all' }">
                         {{ $t("all") }}
                     </button>
-                    <button class="action_btn" @click="todosStore.activeFun()"
+                    <button class="action_btn" aria-labelledby="Active items" @click="todosStore.activeFun()"
                         :class="{ active: todosStore.filterBtn === 'active' }">
                         {{ $t("active") }}
                     </button>
-                    <button class="action_btn" @click="todosStore.completedFun()"
+                    <button class="action_btn" aria-labelledby="Completed items" @click="todosStore.completedFun()"
                         :class="{ active: todosStore.filterBtn === 'completed' }">
                         {{ $t("completed") }}
                     </button>
                 </div>
-                <button class="action_btn" @click="todosStore.clearCompletedFun()">
+                <button class="action_btn" aria-labelledby="Clear completed" @click="todosStore.clearCompletedFun()">
                     {{ $t("deleteCompleted") }}
                 </button>
             </div>
         </div>
 
         <div class="actions_btn_wrapper responsive_action_btns" v-if="todosStore.todos.length > 0">
-            <button class="action_btn" @click="todosStore.allItems()" :class="{ active: todosStore.filterBtn === 'all' }">
+            <button class="action_btn" aria-labelledby="All items" @click="todosStore.allItems()" :class="{ active: todosStore.filterBtn === 'all' }">
                 {{ $t("all") }}
             </button>
-            <button class="action_btn" @click="todosStore.activeFun()"
+            <button class="action_btn" aria-labelledby="Active items" @click="todosStore.activeFun()"
                 :class="{ active: todosStore.filterBtn === 'active' }">
                 {{ $t("active") }}
             </button>
-            <button class="action_btn" @click="todosStore.completedFun()"
+            <button class="action_btn" aria-labelledby="Completed items" @click="todosStore.completedFun()"
                 :class="{ active: todosStore.filterBtn === 'completed' }">
                 {{ $t("completed") }}
             </button>

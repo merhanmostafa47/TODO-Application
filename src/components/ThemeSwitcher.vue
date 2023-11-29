@@ -1,9 +1,9 @@
 <template>
   <div class="theme_switcher_wrapper">
-    <button @click="toggleTheme('dark')" v-if="themeStore.theme == 'light'">
+    <button @click="toggleTheme('dark')" v-if="themeStore.theme == 'light'" aria-labelledby="Select Dark theme">
       <IconMoon />
     </button>
-    <button @click="toggleTheme('light')" v-if="themeStore.theme == 'dark'">
+    <button @click="toggleTheme('light')" v-if="themeStore.theme == 'dark'" aria-labelledby="Select Light theme">
       <IconSun />
     </button>
     <!-- transition-style="in:circle:bottom-right" -->

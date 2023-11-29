@@ -9,10 +9,10 @@
             <label class="todo_item" :for="String(item.id)" :class="{ completed: itemChecked }">{{ updatedText }}</label>
         </div>
         <div class="actions_btn_wrapper">
-            <button class="action_btn" @click="$emit('update', item.id)">
+            <button class="action_btn" @click="$emit('update', item.id)" aria-labelledby="Edit item">
                 <IconEdit />
             </button>
-            <button class="action_btn" @click="$emit('delete')">
+            <button class="action_btn" @click="$emit('delete')" aria-labelledby="Delete item">
                 <IconCross />
             </button>
         </div>

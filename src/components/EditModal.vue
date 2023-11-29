@@ -3,13 +3,13 @@
         <div class="edit_modal_wrapper" v-if="open">
             <v-container class="px-6" align="center" justify="center">
                 <div class="model_wrapper">
-                    <button class="action_btn" @click="$emit('closeModel')">
+                    <button class="action_btn" @click="$emit('closeModel')" aria-labelledby="close Model">
                         <IconCross :color="'var(--text-clr)'" />
                     </button>
                     <div class="edit_modal_input">
                         <input name="item" v-model="dataToEdit" ref="editInput" type="text" class="form-control"
                             @change="updateData(item)" />
-                        <button class="done_btn" @click="$emit('closeModel')">
+                        <button class="done_btn" @click="$emit('closeModel')" aria-labelledby="close Model">
                             <IconCheck />
                         </button>
                     </div>

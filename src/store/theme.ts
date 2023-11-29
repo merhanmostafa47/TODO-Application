@@ -3,7 +3,7 @@ import type { themeState } from "@/types/types";
 
 export const useThemeStore = defineStore("themeStore", {
   state: () => ({
-    theme: localStorage.getItem("theme") as themeState || "light",
+    theme: localStorage.getItem("theme") as themeState || "dark",
   }),
 
   actions: {
