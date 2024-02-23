@@ -2,6 +2,7 @@
 
 TODO-Application is a robust Vue 3 and TypeScript project with essential dependencies like Vuetify, Vue Router, and Pinia. It includes features like drag-and-drop, internationalization, and custom fonts. Built with Vite for fast development.
 
+
 ## 🚀 Run Locally
 1.Clone the TODO-Application repository:
 ```sh
@@ -18,6 +19,6 @@ npm run dev
 
 ## ☁️ Deploy
 
-`[TODO App](https://todo-app-merhanmostafa47.vercel.app/)`
+`[**TODO App**](https://todo-app-merhanmostafa47.vercel.app/)`
 
 
