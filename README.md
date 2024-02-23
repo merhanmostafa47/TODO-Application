@@ -19,6 +19,6 @@ npm run dev
 
 ## ☁️ Deploy
 
-`(**TODO App**)[https://todo-app-merhanmostafa47.vercel.app/]`
+[**TODO App**](https://todo-app-merhanmostafa47.vercel.app/)
 
 
